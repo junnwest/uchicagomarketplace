@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&display=swap');
+
 /* ─── Reset & Variables ─────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
@@ -107,11 +109,32 @@ main { flex: 1; display: flex; flex-direction: column; }
   box-shadow: var(--shadow-maroon);
   flex-shrink: 0;
 }
+.logo-img {
+  width: 46px; height: 46px;
+  border-radius: var(--radius-md);
+  flex-shrink: 0;
+  object-fit: contain;
+}
 .logo-text {
-  font-size: 17px; font-weight: 800;
+  display: flex; flex-direction: column; gap: 0; line-height: 1;
+}
+.logo-name {
+  font-family: 'Oswald', sans-serif;
+  font-size: 24px; font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   background: linear-gradient(135deg, var(--maroon-700), var(--maroon-500));
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+.logo-sub {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 16px; font-weight: 500;
+  color: var(--gray-400);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  -webkit-text-fill-color: var(--gray-400);
+  margin-top: 2px;
 }
 .navbar-center {
   display: flex; align-items: center; gap: 4px;
@@ -217,6 +240,9 @@ main { flex: 1; display: flex; flex-direction: column; }
   background: linear-gradient(135deg, var(--maroon-800), var(--maroon-600));
   padding: 32px; color: white;
 }
+.page-hero-inner {
+  max-width: 1200px; margin: 0 auto; padding: 0 32px;
+}
 .page-hero h2 { font-size: 26px; font-weight: 900; margin-bottom: 6px; }
 .page-hero p { font-size: 14px; color: rgba(255,255,255,.7); }
 .search-small {
@@ -232,10 +258,13 @@ main { flex: 1; display: flex; flex-direction: column; }
 .feature-tabs-bar {
   background: white;
   border-bottom: 2px solid var(--gray-200);
-  padding: 0 32px;
-  display: flex; align-items: flex-end; gap: 0;
   position: sticky; top: 64px; z-index: 90;
   box-shadow: var(--shadow-sm);
+}
+.feature-tabs-inner {
+  max-width: 1100px; margin: 0 auto; width: 100%;
+  padding: 0 32px;
+  display: flex; align-items: flex-end; gap: 0;
 }
 .feature-tab {
   display: flex; align-items: center; gap: 8px;
@@ -799,7 +828,8 @@ main { flex: 1; display: flex; flex-direction: column; }
 
 /* ─── Responsive ────────────────────────────────────────────── */
 @media (max-width: 900px) {
-  .feature-tabs-bar { padding: 0 16px; overflow-x: auto; }
+  .feature-tabs-bar { overflow-x: auto; }
+  .feature-tabs-inner { padding: 0 16px; }
   .feature-tab { padding: 12px 16px; font-size: 13px; }
 }
 @media (max-width: 768px) {
@@ -807,6 +837,7 @@ main { flex: 1; display: flex; flex-direction: column; }
   .navbar-center { display: none; }
   .hero { padding: 80px 16px 64px; }
   .tabs-container { padding: 20px 16px; }
+  .page-hero-inner { padding: 0 16px; }
   .search-results-layout { flex-direction: column; padding: 20px 16px; }
   .filter-sidebar { width: 100%; }
   .listing-layout { padding: 20px 16px; }

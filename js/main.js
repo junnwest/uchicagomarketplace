@@ -21,8 +21,8 @@ function getNavbarHTML() {
   return `
   <nav class="navbar">
     <a href="index.html" class="navbar-logo">
-      <div class="logo-icon">U</div>
-      <span class="logo-text">UChicago Marketplace</span>
+      <img src="wing.svg" class="logo-img" alt="UChicago Marketplace" />
+      <span class="logo-text"><span class="logo-name">UChicago</span><span class="logo-sub">Marketplace</span></span>
     </a>
 
     <div class="navbar-actions" id="nav-logged-out" style="${loggedIn ? 'display:none' : ''}">
@@ -47,7 +47,7 @@ function getAuthModalHTML() {
     <div class="modal">
       <button class="modal-close" onclick="closeModal()">✕</button>
       <div style="text-align:center;margin-bottom:20px;">
-        <div class="logo-icon" style="width:52px;height:52px;font-size:22px;margin:0 auto 12px;">U</div>
+        <img src="wing.svg" class="logo-img" style="width:52px;height:52px;margin:0 auto 12px;display:block;" alt="UChicago Marketplace" />
         <div class="modal-title">Welcome to UChicago Marketplace</div>
         <div class="modal-subtitle">Your UChicago community marketplace</div>
       </div>
@@ -105,10 +105,13 @@ function initPage() {
   const modalMount = document.getElementById('modal-mount');
   if (modalMount) modalMount.innerHTML = getAuthModalHTML();
 
-  // Close modal on overlay click
+  // Close modal on overlay click or Escape key
   document.addEventListener('click', (e) => {
     const overlay = document.getElementById('authModal');
     if (overlay && e.target === overlay) closeModal();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
   });
 }
 
